@@ -1,5 +1,124 @@
 [
   {
+    "id": 8571,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:11 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 1352,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:11 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 5167,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:11 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 3089,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:11 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 1090,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:10 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 7684,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:10 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 1415,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:08:09 PM",
+    "status": "Aguardando o Broker voltar... ⏳"
+  },
+  {
+    "id": 4292,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:27 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 3198,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:27 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 6047,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:27 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 2962,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:27 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 5897,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 1541,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 3585,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 4791,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 6824,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
+    "id": 2083,
+    "tipoRelatorio": "Faturamento Anual Consolidado",
+    "solicitadoPor": "admin@empresa.com",
+    "timestamp": "12:05:26 PM",
+    "status": "Concluído ✅"
+  },
+  {
     "id": 6938,
     "tipoRelatorio": "Faturamento Anual Consolidado",
     "solicitadoPor": "admin@empresa.com",

@@ -7,7 +7,7 @@ Este projeto é um exemplo simples de como implementar uma fila de mensagens usa
 Com docker, basta rodar o comando:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 - A interface do RabbitMQ estará disponível em `http://localhost:15672` com as credenciais padrão (usuário: `guest`, senha: `guest`).
