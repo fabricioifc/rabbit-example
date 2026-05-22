@@ -1,0 +1,33 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_container
+    ports:
+      - "5672:5672" # Porta de comunicação do RabbitMQ
+      - "15672:15672" # Painel de Gerenciamento Web (Login: guest / Senha: guest)
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app-network
+
+  web-app:
+    image: node:20-alpine
+    container_name: web_app_container
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+      - ./historico.json:/usr/src/app/historico.json # Mapeamento explícito do arquivo
+    ports:
+      - "5000:3000"
+    command: sh -c "npm install && node server.js"
+    depends_on:
+      - rabbitmq
+    networks:
+      - app-network
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  app-network:
+    driver: bridge

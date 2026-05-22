@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatórios Assíncronos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos da Tabela de Monitoramento */
+        .monitor-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #555;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Solicitar Novo Relatório 📊</h2>
+
+        <label for="tipo">Tipo de Relatório</label>
+        <select id="tipo">
+            <option value="Faturamento Anual Consolidado">Faturamento Anual Consolidado</option>
+            <option value="Auditoria de Estoque Geral">Auditoria de Estoque Geral</option>
+            <option value="Métricas de Usuários Ativos">Métricas de Usuários Ativos</option>
+        </select>
+
+        <label for="usuario">Seu E-mail</label>
+        <input type="email" id="usuario" value="admin@empresa.com">
+
+        <button onclick="solicitarRelatorio()">Enviar para Fila de Processamento</button>
+    </div>
+
+    <div class="monitor-container">
+        <h3>Painel de Monitoramento (Tempo Real)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Horário</th>
+                    <th>Relatório</th>
+                    <th>Solicitante</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-corpo">
+                <tr>
+                    <td colspan="5" style="text-align: center; color: #999;">Nenhum relatório solicitado ainda.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Envia a solicitação para o backend
+        async function solicitarRelatorio() {
+            const tipoRelatorio = document.getElementById('tipo').value;
+            const solicitadoPor = document.getElementById('usuario').value;
+
+            try {
+                await fetch('/solicitar-relatorio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tipoRelatorio, solicitadoPor })
+                });
+                atualizarPainel(); // Força atualização assim que clica
+            } catch (error) {
+                alert('Erro ao enviar solicitação.');
+            }
+        }
+
+        // Busca o histórico do servidor e atualiza o HTML
+        async function atualizarPainel() {
+            try {
+                const response = await fetch('/status-relatorios');
+                const relatorios = await response.json();
+                const corpo = document.getElementById('tabela-corpo');
+
+                if (relatorios.length === 0) return;
+
+                corpo.innerHTML = relatorios.map(r => `
+                <tr>
+                    <td>#${r.id}</td>
+                    <td>${r.timestamp}</td>
+                    <td><strong>${r.tipoRelatorio}</strong></td>
+                    <td>${r.solicitadoPor}</td>
+                    <td><span>${r.status}</span></td>
+                </tr>
+            `).join('');
+
+            } catch (e) {
+                console.error("Erro ao atualizar painel", e);
+            }
+        }
+
+        // Long polling: Executa a busca a cada 1.5 segundos de forma automática
+        setInterval(atualizarPainel, 1500);
+        atualizarPainel();
+    </script>
+</body>
+
+</html>
